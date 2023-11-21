@@ -1,6 +1,6 @@
-package pl.murakami.sringstudy.FirstRestApp.model;
+package pl.murakami.sringstudy.FirstRestApp.dto;
 
-public class UserEntity {
+public class UserDTO {
     private String username;
     private String password;
     private String email;

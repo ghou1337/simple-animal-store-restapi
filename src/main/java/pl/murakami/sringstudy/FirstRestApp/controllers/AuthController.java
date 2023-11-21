@@ -11,7 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.murakami.sringstudy.FirstRestApp.dto.AuthDTO;
 import pl.murakami.sringstudy.FirstRestApp.security.JwtUtil;
-import pl.murakami.sringstudy.FirstRestApp.model.UserEntity;
+import pl.murakami.sringstudy.FirstRestApp.dto.UserDTO;
 import pl.murakami.sringstudy.FirstRestApp.model.User;
 import pl.murakami.sringstudy.FirstRestApp.security.MyUserDetails;
 import pl.murakami.sringstudy.FirstRestApp.service.RegistrationService;
@@ -29,9 +29,9 @@ public class AuthController {
     private final AuthenticationManager authenticationManager;
 
     @PostMapping("/register")
-    public Map<String, String> registration(@RequestBody UserEntity userEntity,
+    public Map<String, String> registration(@RequestBody UserDTO userDTO,
                                             BindingResult bindingResult) {
-        User user = convertToPerson(userEntity);
+        User user = convertToPerson(userDTO);
         personValidator.validate(user, bindingResult);
         if (bindingResult.hasErrors()) {
             return Map.of("message: ", bindingResult.getFieldErrors().toString());
@@ -70,7 +70,7 @@ public class AuthController {
     public Map<String, String> getSimpleInfo() {
         return Map.of("Message", "You have access to the pages, congratulations");
     }
-    private User convertToPerson(UserEntity userEntity) {
-        return this.modelMapper.map(userEntity, User.class);
+    private User convertToPerson(UserDTO userDTO) {
+        return this.modelMapper.map(userDTO, User.class);
     }
 }
