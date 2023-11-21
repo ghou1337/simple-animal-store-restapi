@@ -62,7 +62,7 @@ public class AnimalController {
     @ExceptionHandler
     public ResponseEntity<AnimalErrorResponse> handleException(AnimalNotFoundException e) {
         AnimalErrorResponse response = new AnimalErrorResponse(
-                "Animal was not updated!",
+                e.getMessage(),
                 System.currentTimeMillis());
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
@@ -70,7 +70,7 @@ public class AnimalController {
     @ExceptionHandler
     private ResponseEntity<AnimalErrorResponse> handleException(AnimalNotCreatedException e) {
         AnimalErrorResponse response = new AnimalErrorResponse(
-                "Animal was not created ",
+                e.getMessage(),
                 System.currentTimeMillis());
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST); // 404
     }
