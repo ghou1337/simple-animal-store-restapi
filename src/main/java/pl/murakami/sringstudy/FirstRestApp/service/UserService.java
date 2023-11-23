@@ -16,10 +16,10 @@ public class UserService {
     @Autowired
     private UserRepos userRepos;
 
-    public User loadByUsername(String username) {
-        return userRepos.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("Not found"));
-    }
+//    public User loadByUsername(String username) {
+//        return userRepos.findByUsername(username)
+//                .orElseThrow(() -> new UsernameNotFoundException("Not found"));
+//    }
     public Optional<User> checkIfUsernameExist(String username) {
         return userRepos.findByUsername(username);
     }

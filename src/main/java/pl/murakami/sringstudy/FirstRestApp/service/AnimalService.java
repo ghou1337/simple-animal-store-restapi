@@ -2,6 +2,7 @@ package pl.murakami.sringstudy.FirstRestApp.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pl.murakami.sringstudy.FirstRestApp.model.Animal;
 import pl.murakami.sringstudy.FirstRestApp.repos.AnimalRepos;
 import pl.murakami.sringstudy.FirstRestApp.utils.AnimalNotFoundException;
@@ -31,7 +32,7 @@ public class AnimalService {
     public List<Animal> getAll() {
         return animalRepos.findAll();
     }
-
+    @Transactional
     public void createAnimal(Animal animal) {
         enrichAnimal(animal);
         animalRepos.save(animal);

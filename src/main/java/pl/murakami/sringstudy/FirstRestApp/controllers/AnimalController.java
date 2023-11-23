@@ -20,8 +20,8 @@ import pl.murakami.sringstudy.FirstRestApp.utils.AnimalNotFoundException;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@RestController // @Controller + @ResponseBody every method
 @RequestMapping("/animal")
+@RestController // @Controller + @ResponseBody every method
 @RequiredArgsConstructor
 public class AnimalController {
     private final AnimalService animalService;
